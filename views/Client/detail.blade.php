@@ -1,0 +1,233 @@
+@extends('client.layouts.main')
+@section('content')
+    <main>
+        <!-- breadcrumb area start -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcrumb-wrap">
+                            <nav aria-label="breadcrumb">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="shop.html">shop</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">product details</li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- breadcrumb area end -->
+
+        <!-- page main wrapper start -->
+        <div class="shop-main-wrapper section-padding pb-0">
+            <div class="container">
+                <div class="row">
+                    <!-- product details wrapper start -->
+                    <div class="col-lg-12 order-1 order-lg-2">
+                        <!-- product details inner end -->
+                        <div class="product-details-inner">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="product-large-slider slick-initialized slick-slider">
+                                        <div class="slick-list draggable">
+                                            <div class="slick-track" style="opacity: 1; width: 1850px;">
+                                                <div class="slick-slide slick-current slick-active" data-slick-index="0"
+                                                    aria-hidden="false"
+                                                    style="width: 370px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1;">
+                                                    <div>
+                                                        <div class="pro-large-img img-zoom"
+                                                            style="width: 100%; display: inline-block; position: relative; overflow: hidden;">
+                                                            <img src="{{ file_url($detailProduct['img_thumbnail']) }}"
+                                                                alt="product-details">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="product-details-des">
+                                        <div class="manufacturer-name">
+                                            <a href="#">{{ $detailCategories['name'] }}</a>
+                                        </div>
+                                        <h3 class="product-name">{{ $detailProduct['name'] }}</h3>
+                                        <div class="ratings d-flex">
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <div class="pro-review">
+                                                <span>1 Reviews</span>
+                                            </div>
+                                        </div>
+                                        <div class="price-box">
+                                            <span class="price-regular"
+                                                style="display: {{ $detailProduct['is_sale'] == 0 ? 'none' : '' }}">${{ $detailProduct['price_sale'] }}</span>
+                                            <span
+                                                class=" {{ $detailProduct['is_sale'] == 0 ? 'price-regular' : 'price-old' }}">${{ $detailProduct['price'] }}</span>
+                                        </div>
+                                        <div class="availability">
+                                            <i class="fa fa-check-circle"></i>
+                                            <span>200 in stock</span>
+                                        </div>
+                                        <p class="pro-desc">{{ $detailProduct['overview'] }}</p>
+                                        <div class="quantity-cart-box d-flex align-items-center">
+                                            <h6 class="option-title">qty:</h6>
+                                            <div class="quantity">
+                                                <div class="pro-qty"><span class="dec qtybtn">-</span><input type="text"
+                                                        value="1"><span class="inc qtybtn">+</span>
+                                                </div>
+                                            </div>
+                                            <div class="action_link">
+                                                <a href="/addProduct/{{$detailProduct['id']}}" class="btn btn-cart">add to
+                                                    cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="pro-size">
+                                            <h6 class="option-title">size :</h6>
+                                            <select class="nice-select" style="display: none;">
+                                                <option>S</option>
+                                                <option>M</option>
+                                                <option>L</option>
+                                                <option>XL</option>
+                                            </select>
+                                            <div class="nice-select" tabindex="0"><span class="current">S</span>
+                                                <ul class="list">
+                                                    <li data-value="S" class="option selected">S</li>
+                                                    <li data-value="M" class="option">M</li>
+                                                    <li data-value="L" class="option">L</li>
+                                                    <li data-value="XL" class="option">XL</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="color-option">
+                                            <h6 class="option-title">color :</h6>
+                                            <ul class="color-categories">
+                                                <li>
+                                                    <a class="c-lightblue" href="#" title="LightSteelblue"></a>
+                                                </li>
+                                                <li>
+                                                    <a class="c-darktan" href="#" title="Darktan"></a>
+                                                </li>
+                                                <li>
+                                                    <a class="c-grey" href="#" title="Grey"></a>
+                                                </li>
+                                                <li>
+                                                    <a class="c-brown" href="#" title="Brown"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="useful-links">
+                                            <a href="#" data-bs-toggle="tooltip" title=""
+                                                data-bs-original-title="Compare"><i class="pe-7s-refresh-2"></i>compare</a>
+                                            <a href="#" data-bs-toggle="tooltip" title=""
+                                                data-bs-original-title="Wishlist"><i class="pe-7s-like"></i>wishlist</a>
+                                        </div>
+                                        <div class="like-icon">
+                                            <a class="facebook" href="#"><i class="fa fa-facebook"></i>like</a>
+                                            <a class="twitter" href="#"><i class="fa fa-twitter"></i>tweet</a>
+                                            <a class="pinterest" href="#"><i class="fa fa-pinterest"></i>save</a>
+                                            <a class="google" href="#"><i class="fa fa-google-plus"></i>share</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- product details inner end -->
+
+                        <!-- product details reviews start -->
+                        <div class="product-details-reviews section-padding pb-0">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="product-review-info">
+                                        <ul class="nav review-tab">
+                                            <li>
+                                                <a class="active" data-bs-toggle="tab" href="#tab_one">description</a>
+                                            </li>
+                                            <li>
+                                                <a data-bs-toggle="tab" href="#tab_two">information</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content reviews-tab">
+                                            <div class="tab-pane fade show active" id="tab_one">
+                                                <div class="tab-one">
+                                                    <p>{{ $detailProduct['content'] }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="tab_two">
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>color</td>
+                                                            <td>black, blue, red</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>size</td>
+                                                            <td>L, M, S</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="comment-section section-padding">
+                                            <h5>Comment</h5>
+                                            <ul>
+                                                @foreach ($listComment as $comment)
+                                                    <li>
+                                                        <div class="author-avatar">
+                                                            <img src="{{ file_url($comment['avatar']) }}" alt="">
+                                                        </div>
+                                                        <div class="comment-body">
+                                                            <span class="reply-btn"><a href="#">Reply</a></span>
+                                                            <h5 class="comment-author">Admin</h5>
+                                                            <div class="comment-post-date">
+                                                                {{ $comment['date'] }}
+                                                            </div>
+                                                            <p>{{ $comment['content'] }}</p>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+
+                                            <div class="blog-comment-wrapper" style="margin-top: 16px">
+                                                <form action="/comment/store/{{ $detailProduct['id'] }}" method="post">
+                                                    <div class="comment-post-box">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <textarea name="content" placeholder="Write a comment"></textarea>
+                                                            </div>
+                                                            <input type="hidden" name="categories_id"
+                                                                value="{{ $detailCategories['id'] }}">
+                                                            <div class="col-12">
+                                                                <div class="coment-btn">
+                                                                    <button class="btn btn-sqr"
+                                                                        type="submit">Submit</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- product details reviews end -->
+                    </div>
+                    <!-- product details wrapper end -->
+                </div>
+            </div>
+        </div>
+        <!-- page main wrapper end -->
+
+    </main>
+@endsection

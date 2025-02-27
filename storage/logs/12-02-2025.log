@@ -1,0 +1,1 @@
+App\Controller::uploadFile(): Argument #1 ($file) must be of type array, null given, called in C:\laragon\www\Lab_5\app\Controllers\Admin\UserController.php on line 59
