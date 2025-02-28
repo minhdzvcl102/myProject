@@ -22,7 +22,3 @@ $router->get("/delete/cartProduct/{idCart}", fn: UserController::class . '@delet
 // Pay
 $router->get("/formCheckOut", fn: UserController::class . '@formCheckOut');
 $router->post("/checkout", fn: UserController::class . '@checkout');
-$router->get("/abc", function(){
-    $a = new CartUser();
-    $a->deleteCheckOut(19);
-});
