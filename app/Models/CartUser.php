@@ -35,8 +35,6 @@ class CartUser extends Model
     }
     public function deleteCheckOut($id)
     {
-        $queryBuilder = $this->connection->createQueryBuilder();
-        $queryBuilder->delete($this->tableName,['user_id'=>$id]);
-            return true;
+        return $this->connection->delete($this->tableName, ['user_id' => $id]);
     }
 }
