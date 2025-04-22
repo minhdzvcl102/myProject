@@ -39,7 +39,7 @@
                             <span><strong>{{ $_SESSION['total'] }}</strong></span>
                         </li>
                         <li>
-                            <span>VAT (20%)</span>
+                            <span>VAT (2%)</span>
                             <span><strong>${{ $_SESSION['vat'] }}</strong></span>
                         </li>
                         <li class="total">

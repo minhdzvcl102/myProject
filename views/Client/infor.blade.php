@@ -55,37 +55,25 @@
                                                             <thead class="thead-light">
                                                                 <tr>
                                                                     <th>Order</th>
-                                                                    <th>Date</th>
-                                                                    <th>Status</th>
-                                                                    <th>Total</th>
+                                                                    <th>Customer</th>
+                                                                    <th>Toltal_amount</th>
+                                                                    <th>phone</th>
+                                                                    <th>method_pay</th>
                                                                     <th>Action</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <td>1</td>
-                                                                    <td>Aug 22, 2018</td>
-                                                                    <td>Pending</td>
-                                                                    <td>$3000</td>
-                                                                    <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>2</td>
-                                                                    <td>July 22, 2018</td>
-                                                                    <td>Approved</td>
-                                                                    <td>$200</td>
-                                                                    <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>3</td>
-                                                                    <td>June 12, 2017</td>
-                                                                    <td>On Hold</td>
-                                                                    <td>$990</td>
-                                                                    <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                    </td>
-                                                                </tr>
+                                                                @foreach ($listOders as $orderIndex => $oder)
+                                                                    <tr>
+                                                                        <td>{{ $orderIndex + 1}}</td>
+                                                                        <td>{{ $oder['customers'] }}</td>
+                                                                        <td>${{ $oder['total_amount'] }}</td>
+                                                                        <td>${{ $oder['phone'] }}</td>
+                                                                        <td>${{ $oder['method_pay'] }}</td>
+                                                                        <td><a href="/user/orderDetail/{{$oder['id']}}" class="btn btn-sqr">View</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -139,7 +127,8 @@
                                             <div class="tab-pane fade" id="pass" role="tabpanel">
                                                 <div class="myaccount-content">
                                                     <div class="account-details-form">
-                                                        <form action="/user/updatePass/{{ $userDetail['id'] }}" method="post">
+                                                        <form action="/user/updatePass/{{ $userDetail['id'] }}"
+                                                            method="post">
                                                             @include('admin.components.display-msg-fail')
                                                             @include('admin.components.display-msg-success')
                                                             @include('admin.components.display-errors')
@@ -157,7 +146,8 @@
                                                                             <label for="new-pwd" class="required">New
                                                                                 Password</label>
                                                                             <input type="password" id="new-pwd"
-                                                                                placeholder="New Password" name="newPassword">
+                                                                                placeholder="New Password"
+                                                                                name="newPassword">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-6">
@@ -166,13 +156,15 @@
                                                                                 class="required">Confirm
                                                                                 Password</label>
                                                                             <input type="password" id="confirm-pwd"
-                                                                                placeholder="Confirm Password" name="confirmPassword">
+                                                                                placeholder="Confirm Password"
+                                                                                name="confirmPassword">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </fieldset>
                                                             <div class="single-input-item">
-                                                                <button type="submit" class="btn btn-sqr">Save Changes</button>
+                                                                <button type="submit" class="btn btn-sqr">Save
+                                                                    Changes</button>
                                                             </div>
                                                         </form>
                                                     </div>

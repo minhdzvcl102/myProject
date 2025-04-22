@@ -30,8 +30,15 @@ class UserController extends Controller
     {
         $idUser = $_SESSION['user']['id'];
         $userDetail = $this->user->findId($idUser);
-        // debug($userDetail);
-        return view('client.infor', compact('userDetail'));
+        $listOders = $this->oder->findOderID($idUser);
+        // debug($idUser);
+        return view('client.infor', compact('userDetail', 'listOders'));
+    }
+    public function orderDetail($oderDetail)
+    {
+        $listOders = $this->oder->findOrderDetail($oderDetail);
+        // debug($listOders);
+        return view('client.oderDetail', compact('listOders'));
     }
 
     public function addProductCard($product_id)
@@ -171,7 +178,7 @@ class UserController extends Controller
                 }
                 $this->oderDetail->insert($item);
             }
-            
+
             $this->cartUser->deleteCheckOut($_SESSION['user']['id']);
             // debug($_SESSION['user']['id']);
             $_SESSION['msg'] = 'Thao Tác Thành công ';
@@ -196,5 +203,4 @@ class UserController extends Controller
             // redirect('/formCheckOut');
         }
     }
-    
 }

@@ -11,7 +11,7 @@
     <style>
         /* Background Image */
         body {
-            background: url('https://i.imgur.com/lA9MDaD.png') no-repeat center center fixed;
+            background: url('https://cdn5.f-cdn.com/contestentries/1578585/21468461/5d62b49ac544b_thumb900.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Arial', sans-serif;
         }

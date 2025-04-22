@@ -131,7 +131,7 @@
                                                 <td><strong>${{ $_SESSION['total'] }}</strong></td>
                                             </tr>
                                             <tr>
-                                                <td>VAT 20% </td>
+                                                <td>VAT 2% </td>
                                                 <td><strong>${{ $_SESSION['total'] * 0.02 }}</strong></td>
                                             </tr>
                                             <tr>

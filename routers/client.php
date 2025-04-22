@@ -16,6 +16,7 @@ $router->post("/comment/store/{product_id}", DetailController::class . '@store')
 $router->get("/showInfor/{user_id}", fn: UserController::class . '@showInforUser');
 $router->post("/user/update/{idUser}", fn: AdminUserController::class . '@update');
 $router->post("/user/updatePass/{idUser}", fn: UserController::class . '@updatePass');
+$router->get("/user/orderDetail/{oderId}", fn: UserController::class . '@orderDetail');
 // Cart 
 $router->get("/addProduct/{product_id}", fn: UserController::class . '@addProductCard');
 $router->get("/delete/cartProduct/{idCart}", fn: UserController::class . '@deleteItemCart');

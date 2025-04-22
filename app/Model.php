@@ -110,4 +110,5 @@ class Model
     public function rollBack() {
         $this->connection->rollBack();
     }
+    
 }
