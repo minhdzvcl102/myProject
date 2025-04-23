@@ -45,14 +45,14 @@
                                                 <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
                                                             src="{{ file_url($value['img_thumbnail']) }}"
                                                             alt="Product"></a></td>
-                                                <td class="pro-title"><a href="#">{{ $value['product_name'] }}</a></td>
+                                                <td class="pro-title"><a href="#">{{ $value['product_name'] }}</a>
+                                                </td>
                                                 <td class="pro-price">${{ $value['price'] }}</td>
                                                 <td class="pro-quantity">
-                                                    <div class="pro-qty"><input type="text"
-                                                            value="{{ $value['quantity'] }}"></div>
+                                                    <div >{{ $value['quantity'] }}</div>
                             </div>
                             </td>
-                            <td class="pro-subtotal"><span>${{$value['price'] * $value['quantity']}}</span></td>
+                            <td class="pro-subtotal"><span>${{ $value['price'] * $value['quantity'] }}</span></td>
                             </td>
                             </tr>
                             @endforeach
@@ -73,15 +73,17 @@
                                         <tbody>
                                             <tr>
                                                 <td>Sub Total</td>
-                                                <td>${{$value['price'] * $value['quantity']}}</td>
+                                                <td>${{ $subTotal}}</td>
                                             </tr>
                                             <tr>
                                                 <td>VAT 2%</td>
-                                                <td>${{$value['price'] * $value['quantity'] * 2/100}}</td>
+                                                <td>${{ ($subTotal * 2) / 100 }}</td>
                                             </tr>
                                             <tr class="total">
                                                 <td>Total</td>
-                                                <td class="total-amount">${{($value['price'] * $value['quantity']) + ($value['price'] * $value['quantity'] * 2/100)}}</td>
+                                                <td class="total-amount">
+                                                    ${{ $subTotal + ($subTotal * 2) / 100}}
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

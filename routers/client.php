@@ -8,7 +8,7 @@ use App\Models\CartUser;
 
 // home 
 $router->get("/", HomeController::class . '@index');
-$router->get("/listProduct", HomeController::class . '@listProduct');
+$router->get("/listProduct(/(\w+))?", HomeController::class . '@listProduct');
 $router->get("/detailProduct/{id}/{category_id}", HomeController::class . '@detailProduct');
 //coment
 $router->post("/comment/store/{product_id}", DetailController::class . '@store');

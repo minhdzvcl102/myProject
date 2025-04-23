@@ -1,6 +1,5 @@
-
- <!-- Start Header Area -->
- <header class="header-area">
+<!-- Start Header Area -->
+<header class="header-area">
  <!-- main header start -->
  <div class="main-header d-none d-lg-block">
  <!-- header top start -->
@@ -88,8 +87,8 @@
  <ul class="nav justify-content-end">
  <li class="header-search-container mr-0">
  <button class="search-trigger d-block"><i class="pe-7s-search"></i></button>
- <form class="header-search-box d-none">
- <input type="text" placeholder="Search entire store hire"
+ <form action="/listProduct" method="get" class="header-search-box d-none">
+ <input type="text" name="search" placeholder="Search entire store hire"
  class="header-search-field">
  <button class="header-search-btn"><i class="pe-7s-search"></i></button>
  </form>
@@ -105,8 +104,7 @@
  <i class="pe-7s-user"></i>
  </a>
  <ul class="dropdown-list">
- <li><a
- href="<?= 'http://lab.test/showInfor/' . $_SESSION['user']['id'] ?>">my
+ <li><a href="<?= 'http://lab.test/showInfor/' . $_SESSION['user']['id'] ?>">my
  account</a></li>
 
  <li><a href="http://lab.test/auth/logout">logout</a></li>
@@ -124,7 +122,7 @@
  <li>
  <a href="#" class="minicart-btn">
  <i class="pe-7s-shopbag"></i>
- 
+
  </a>
  </li>
  </ul>
@@ -221,8 +219,8 @@
  <ul class="nav">
  <li>
  <div class="dropdown mobile-top-dropdown">
- <a href="#" class="dropdown-toggle" id="currency"
- data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ <a href="#" class="dropdown-toggle" id="currency" data-bs-toggle="dropdown"
+ aria-haspopup="true" aria-expanded="false">
  Currency
  <i class="fa fa-angle-down"></i>
  </a>
@@ -261,5 +259,5 @@
  </aside>
  <!-- off-canvas menu end -->
  <!-- offcanvas mobile menu end -->
- </header>
- <!-- end Header Area -->
+</header>
+<!-- end Header Area -->

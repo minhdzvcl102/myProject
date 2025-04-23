@@ -59,6 +59,7 @@
                                                                     <th>Toltal_amount</th>
                                                                     <th>phone</th>
                                                                     <th>method_pay</th>
+                                                                    <th>Status</th>
                                                                     <th>Action</th>
                                                                 </tr>
                                                             </thead>
@@ -70,6 +71,7 @@
                                                                         <td>${{ $oder['total_amount'] }}</td>
                                                                         <td>${{ $oder['phone'] }}</td>
                                                                         <td>${{ $oder['method_pay'] }}</td>
+                                                                        <td>{{ $oder['status_name'] }}</td> 
                                                                         <td><a href="/user/orderDetail/{{$oder['id']}}" class="btn btn-sqr">View</a>
                                                                         </td>
                                                                     </tr>

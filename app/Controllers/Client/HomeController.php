@@ -58,6 +58,7 @@ class HomeController extends Controller
   }
   public function listProduct()
   {
+
     if (!empty($_SESSION['user'])) {
       $listCart = $this->cartUser->findAllcartUser($_SESSION['user']['id']);
       $_SESSION['listCart'] = $listCart;
@@ -71,10 +72,42 @@ class HomeController extends Controller
       $_SESSION['vat'] = $total * 0.02;
       $_SESSION['total'] = $total;
     }
+
     $listProducts = $this->product->findAll();
     $listProducts = array_filter($listProducts, function ($product) {
       return $product['is_show_home'] == 1;
     });
+    if (isset($_GET['search'])) {
+      $search = $_GET['search'];
+      $listProducts = array_filter($listProducts, function ($product) use ($search) {
+        return str_contains($product['name'], $search);
+      });
+    }
+    // debug($categories_search);
+    if (isset($_GET['categories_search'])) {
+      $categories_search = $_GET['categories_search'];
+      $listProducts = array_filter($listProducts, function ($product) use ($categories_search) {
+        return $product['category_id'] == $categories_search;
+      });
+    }
+  
+    if(isset($_GET['amount'])){
+      $priceRange = $_GET['amount'];
+      // Loại bỏ ký tự `$` và tách chuỗi theo dấu `-`
+      list($min, $max) = explode('-', str_replace('$', '', $priceRange));
+  
+      // Trim để loại bỏ khoảng trắng
+      $min = trim($min);
+      $max = trim($max);
+
+      $listProducts = array_filter($listProducts, function ($product) use ($min, $max) {
+        if ($product['is_sale'] == 1) {
+          return $product['price_sale'] >= $min && $product['price_sale'] <= $max;
+        } else {
+          return $product['price'] >= $min && $product['price'] <= $max;
+        }
+      });
+    }
     $listCategories = $this->categories->findAll();
     $listCategories = array_filter($listCategories, function ($categories) {
       return $categories['is_active'] == 1;

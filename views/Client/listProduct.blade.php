@@ -35,7 +35,7 @@
                                 <div class="sidebar-body">
                                     <ul class="shop-categories">
                                         @foreach ($listCategories as $categories)
-                                            <li><a href="#">{{ $categories['name'] }} </a></li>
+                                            <li><a href="/listProduct/?categories_search={{$categories['id']}}">{{ $categories['name'] }} </a></li>
                                         @endforeach
 
                                     </ul>
@@ -58,12 +58,12 @@
                                                 style="left: 100%;"></span>
                                         </div>
                                         <div class="range-slider">
-                                            <form action="#" class="d-flex align-items-center justify-content-between">
+                                            <form action="/listProduct" method="get" class="d-flex align-items-center justify-content-between">
                                                 <div class="price-input">
                                                     <label for="amount">Price: </label>
-                                                    <input type="text" id="amount">
+                                                    <input type="text" id="amount" name="amount">
                                                 </div>
-                                                <button class="filter-btn">filter</button>
+                                                <button class="filter-btn" type="submit">filter</button>
                                             </form>
                                         </div>
                                     </div>

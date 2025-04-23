@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\CartUser;
 use App\Models\Oder;
 use App\Models\OderDetail;
+use App\Models\Status;
 use App\Models\User;
 use Rakit\Validation\Validator;
 use Throwable;
@@ -14,6 +15,7 @@ use Throwable;
 class UserController extends Controller
 {
     protected $cart;
+    protected $status;
     protected $oder;
     protected $cartUser;
     protected $user;
@@ -25,20 +27,26 @@ class UserController extends Controller
         $this->user = new User();
         $this->oder = new Oder();
         $this->oderDetail = new OderDetail();
+        $this->status = new Status();
     }
     public function showInforUser()
     {
         $idUser = $_SESSION['user']['id'];
         $userDetail = $this->user->findId($idUser);
         $listOders = $this->oder->findOderID($idUser);
+        // debug($listOders);
         // debug($idUser);
         return view('client.infor', compact('userDetail', 'listOders'));
     }
     public function orderDetail($oderDetail)
     {
         $listOders = $this->oder->findOrderDetail($oderDetail);
-        // debug($listOders);
-        return view('client.oderDetail', compact('listOders'));
+        $subTotal = 0;
+        foreach ($listOders as $item) {
+            $subTotal += $item['total_amount'];
+        }
+        // debug($subTotal);
+        return view('client.oderDetail', compact('listOders', 'subTotal'));
     }
 
     public function addProductCard($product_id)
@@ -161,8 +169,9 @@ class UserController extends Controller
             $data['total_amount'] =  $_SESSION['total'] + $_SESSION['vat'];
             // Thêm vào database
 
-
+            $type_status = 1;
             $idOder = $this->oder->insert($data);
+            $this->status->insert(['oder_id' => $idOder, 'type_status' => $type_status]);
             $dataProduct = $_SESSION['listCart'];
 
             // debug($_SESSION['listCart']);
